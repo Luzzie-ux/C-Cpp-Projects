@@ -1,19 +1,9 @@
 #include "c_string.h"
 
-void _String(string **self)
+void del_string(string **self)
 {
 	if (!self || !*self)
 		return;
-	if (!(*self)->attr)
-	{
-		if (!(*self)->value)
-			return (free(*self));
-		free((*self)->value);
-		(*self)->value = NULL;
-		(*self)->len = 0;
-		return (free(*self));
-	}
-	_Object(&(*self)->attr);
 	if (!(*self)->value)
 		return ((*self)->len = 0, free(*self));
 	free((*self)->value);
@@ -33,40 +23,35 @@ static void assign_methods(string **self)
 	(*self)->compare = compare;
 }
 
-string *String(const char *value)
+string *fresh_string(const char *value)
 {
-
 	if (!value)
-	{
-		write(2, "Returning (null)\n", 18);
 		return (NULL);
-	}
 	string *obj = (string *)malloc(sizeof(string));
 	if (!obj)
 		return (NULL);
-	obj->attr = Object("String", sizeof(string));
 	obj->value = ft_strdup(value);
 	if (!obj->value)
-		return (_String(&obj), NULL);
+		return (del_string(&obj), NULL);
 	assign_methods(&obj);
 	obj->len = obj->length(obj);
 	return (obj);
 }
 
-string *Copy(string *new_obj, const string *old_obj)
+string *repl_string(string *other, const string *self)
 {
-	if (!new_obj || !old_obj)
+	if (!other || !self)
 		return (NULL);
-	if (new_obj == old_obj)
-		return (new_obj);
-	char *tmp = ft_strdup(old_obj->value);
+	if (other == self)
+		return (other);
+	char *tmp = ft_strdup(self->value);
 	if (!tmp)
 		return (NULL);
-	if (new_obj->value)
-		free(new_obj->value);
-	new_obj->value = tmp;
-	new_obj->len = old_obj->len;
-	return (new_obj);
+	if (other->value)
+		free(other->value);
+	other->value = tmp;
+	other->len = self->len;
+	return (other);
 }
 
 int clear(string *self)
@@ -94,14 +79,14 @@ int display(const string *self)
 	return printf("%s", self->value);
 }
 
-int resize(string *self, const int *n)
+int resize(string *self, const int n)
 {
 	char *tmp;
 	if (!self)
 		return (1);
-	tmp = realloc(self->value, (*n + 1) * sizeof(char));
+	tmp = realloc(self->value, (n + 1) * sizeof(char));
 	if (!tmp)
-		return (_String(&self), 1);
+		return (del_string(&self), 1);
 	self->value = tmp;
 	return (0);
 }
@@ -112,7 +97,7 @@ int append(string *self, const char *value)
 		return (1);
 	int size = ft_strlen(value);
 	int total = self->len + size;
-	if (self->resize(self, &total))
+	if (self->resize(self, total))
 		return (1);
 	int i = -1;
 	while (++i < size)
@@ -130,7 +115,7 @@ int replace(string *self, const char *value)
 		free(self->value);
 	self->value = ft_strdup(value);
 	if (!self->value)
-		return (_String(&self), 1);
+		return (del_string(&self), 1);
 	return (0);
 }
 
