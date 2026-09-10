@@ -31,32 +31,38 @@ typedef struct	s_coder{
 	pthread_t	thread;
 	size_t		id;
 	t_action	action;
-	t_bool		is_burnout;
 	t_dongle	*left;
 	t_dongle	*right;
-	size_t		t_burnout;
-	size_t		t_compile;
-	size_t		t_debug;
-	size_t		t_refactor;
-	size_t		t_cooldown;
-	size_t		t_total;
+	time_t 		deadline;
+	time_t 		last_compile;
+	time_t		internal_clock;
 }				t_coder;
 
 typedef struct	s_table{
 	t_schedule	schedule;
-	t_coder		**coders;
-	t_dongle	**dongle;
-	size_t		nbr_coders;
-	size_t		nbr_dongles;
+	t_coder		*coders;
+	t_dongle	*dongles;
+	size_t		elements;
+	time_t		burnout;
+	time_t		compile;
+	time_t		debug;
+	time_t		refactor;
+	size_t 		nbr_compiles;
+	time_t 		dongle_cooldown;
+	time_t		total_time;
 }				t_table;
 
+	//		Parsing Methods		//
+int parser(t_table *table, char **argv);
+
 	//		String Methods		//
-int		ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 int 	ft_strcmp(const char *s1, const char *s2);
 int 	ft_atoi(const char *nptr);
+long 	ft_atol(const char *nptr);
 
 	//		Memory Methods		//
-void 	*memset(void *s, int c, size_t n);
+void 	*ft_memset(void *s, int c, size_t n);
 
 	//		Coder Methods		//
 	//		Dongle Methods		//

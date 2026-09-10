@@ -2,8 +2,9 @@ NAME = codexion
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = srcs/codexion.c, srcs/memory.c, srcs/parser.c, srcs/strings.c
-MAIN = main.c
+INCS = incs/codexion.h 
+SRCS = srcs/codexion.c, srcs/memory.c, srcs/parser.c, srcs/strings.c \
+		main.c
 
 OBJS = $(SRCS:.c=.o) $(MAIN: .c=.o)
 
