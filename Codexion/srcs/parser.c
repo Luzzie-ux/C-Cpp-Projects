@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:49 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 22:20:40 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/10 23:37:15 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ int	parser(t_table *table, char **argv)
 	table->schedule = ft_atol(argv[8]);
 	return (0);
 }
-

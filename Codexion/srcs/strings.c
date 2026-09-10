@@ -6,25 +6,25 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:32 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 22:21:03 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/10 23:09:25 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/codexion.h"
 
-size_t 	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
 	if (!s)
 		return (0);
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
 
-int ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	int	i;
 
@@ -52,14 +52,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-long ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	long	res;
-	char 	*ptr;
+	char	*ptr;
 
 	res = 0;
-	ptr = (char*)nptr;
-	while(*ptr >= '0' && *ptr <= '9')
+	ptr = (char *)nptr;
+	while (*ptr >= '0' && *ptr <= '9')
 	{
 		res *= 10 + (*ptr - '0');
 		ptr++;

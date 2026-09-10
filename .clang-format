@@ -4,7 +4,8 @@ Language: Cpp
 UseTab: Always
 TabWidth: 4
 IndentWidth: 4
-ColumnLimit: 90
+ColumnLimit: 80
+LineEnding: LF
 
 BreakBeforeBraces: Allman
 AllowShortFunctionsOnASingleLine: None
@@ -20,20 +21,23 @@ SpacesInParentheses: false
 SpacesInSquareBrackets: false
 SpaceBeforeAssignmentOperators: true
 
-IndentCaseLabels: false
-NamespaceIndentation: None
+IndentCaseLabels: true
+NamespaceIndentation: All
 AccessModifierOffset: -4
 
 AlignConsecutiveAssignments: None
-AlignConsecutiveDeclarations: None
+AlignConsecutiveDeclarations:
+  Enable: true
+  AlignFunctionDeclarations: true
+  AlignFunctionPointers: true
 AlignTrailingComments: false
+AlignAfterOpenBracket: true
 ReflowComments: false
 
 SortIncludes: Never
 IncludeBlocks: Preserve
 
 MaxEmptyLinesToKeep: 1
-InsertNewlineAtEOF: true
 KeepEmptyLinesAtTheStartOfBlocks: false
 
 BinPackArguments: false

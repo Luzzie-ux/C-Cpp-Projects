@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   codexion.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/09/10 23:48:07 by rodrpere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CODEXION_H
 # define CODEXION_H
 
@@ -7,38 +19,43 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef enum	e_action{
-				COMPILE,
-				DEBUG,
-				REFACTOR,
-}				t_action;
+typedef enum e_action
+{
+	COMPILE,
+	DEBUG,
+	REFACTOR,
+}	t_action;
 
-typedef enum	e_schedule{
-				FIFO,
-				LIFO,
-				EDF,
-}				t_schedule;
+typedef enum e_schedule
+{
+	FIFO,
+	LIFO,
+	EDF,
+}	t_schedule;
 
-typedef unsigned int t_bool;
+typedef unsigned int	t_bool;
 
-typedef struct	s_dongle{
+typedef struct s_dongle
+{
 	size_t		id;
 	t_bool		is_taken;
 	size_t		cooldown;
 }				t_dongle;
 
-typedef struct	s_coder{
+typedef struct s_coder
+{
 	pthread_t	thread;
 	size_t		id;
 	t_action	action;
 	t_dongle	*left;
 	t_dongle	*right;
-	time_t 		deadline;
-	time_t 		last_compile;
+	time_t		deadline;
+	time_t		last_compile;
 	time_t		internal_clock;
 }				t_coder;
 
-typedef struct	s_table{
+typedef struct s_table
+{
 	t_schedule	schedule;
 	t_coder		*coders;
 	t_dongle	*dongles;
@@ -47,8 +64,8 @@ typedef struct	s_table{
 	time_t		compile;
 	time_t		debug;
 	time_t		refactor;
-	size_t 		nbr_compiles;
-	time_t 		dongle_cooldown;
+	size_t		nbr_compiles;
+	time_t		dongle_cooldown;
 	time_t		total_time;
 }				t_table;
 
@@ -59,13 +76,13 @@ int		usage(void);
 
 	//		String Methods		//
 size_t	ft_strlen(const char *s);
-int 	ft_strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int 	ft_atoi(const char *nptr);
-long 	ft_atol(const char *nptr);
+int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 
 	//		Memory Methods		//
-void 	*ft_memset(void *s, int c, size_t n);
+void	*ft_memset(void *s, int c, size_t n);
 
 	//		Coder Methods		//
 	//		Dongle Methods		//
