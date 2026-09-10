@@ -53,11 +53,14 @@ typedef struct	s_table{
 }				t_table;
 
 	//		Parsing Methods		//
-int parser(t_table *table, char **argv);
+int		parser(t_table *table, char **argv);
+int		error(int status);
+int		usage(void);
 
 	//		String Methods		//
 size_t	ft_strlen(const char *s);
 int 	ft_strcmp(const char *s1, const char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int 	ft_atoi(const char *nptr);
 long 	ft_atol(const char *nptr);
 

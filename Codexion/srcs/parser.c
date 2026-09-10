@@ -1,45 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/10 21:22:49 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/09/10 22:20:40 by rodrpere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../incs/codexion.h"
 
-static int characters(char *arg)
+static int	characters(char *arg)
 {
 	size_t	i;
 
 	i = 0;
 	if (arg[i] == '-')
-	{
-		fprintf(stderr, "ERROR: Negative Integer -> %s\n", arg);
-		return (1);
-	}
-	else if (arg[i] == '+')
-		i++;
+		return (error(2));
 	while (arg[i])
 	{
 		if (arg[i] < '0' || arg[i] > '9')
-		{
-			fprintf(stderr, "ERROR: Non-Intgeger -> %s\n", arg);
-			return (1);
-		}
+			return (error(1));
 		i++;
 	}
 	return (0);
 }
 
-static int scheduler(char *arg)
+static int	scheduler(char *arg)
 {
 	if (*arg == '\0')
-	{
-		fprintf(stderr, "ERROR: Empty Schedule Argument\n");
-		return (1);
-	}
-	if (ft_strcmp(arg, "fifo") || ft_strcmp(arg, "edf"))
-	{
-		fprintf(stderr, "ERROR: Not FIFO/EDF -> %s\n", arg);
-		return (1);
-	}
-	return (0);
+		return (error(4));
+	else if (!ft_strncmp(arg, "fifo", 4))
+		return (0);
+	else if (!ft_strncmp(arg, "edf", 3))
+		return (0);
+	return (error(3));
 }
 
-static int check(char **args)
+static int	check(char **args)
 {
 	int	i;
 
@@ -49,17 +49,14 @@ static int check(char **args)
 	while (++i < 8)
 	{
 		if (*args[i] == '\0' || !args[i] || !args)
-		{
-			fprintf(stderr, "ERROR: Empty Argument -> %s[%d]\n", args[i], i);
-			return (1);
-		}
+			return (error(0));
 		else if (characters(args[i]))
 			return (1);
 	}
 	return (0);
 }
 
-int parser(t_table *table, char **argv)
+int	parser(t_table *table, char **argv)
 {
 	if (check(argv))
 		return (1);

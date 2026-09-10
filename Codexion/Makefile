@@ -1,14 +1,14 @@
 NAME = codexion
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 INCS = incs/codexion.h 
-SRCS = srcs/codexion.c srcs/memory.c srcs/parser.c srcs/strings.c \
+SRCS = srcs/codexion.c srcs/memory.c srcs/parser.c srcs/strings.c srcs/errors.c \
 		main.c
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)

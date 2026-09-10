@@ -1,16 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/10 21:22:03 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/09/10 21:41:37 by rodrpere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "incs/codexion.h"
 
 int main(int argc, char **argv)
 {
 	t_table	table;
 	if (argc != 9)
-	{
-		fprintf(stderr, "Usage: %s <nbr_of_coders> <time_burnout>", argv[0]);
-		fprintf(stderr, " <time_compile> <time_debug> <time_refactor>");
-		fprintf(stderr, " <nbr_of_compiles_required> <dongle_cooldown>");
-		fprintf(stderr, " <scheduler>\n");
-		return (1);
-	}
+		return (fprintf(stderr, "Usage: %s", argv[0]), usage());
 	if (parser(&table, argv))
 		return(1);
 	printf("Everything Working :D !\n");
