@@ -28,17 +28,19 @@ int ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
-int ft_atoi(const char *nptr)
+long ft_atol(const char *nptr)
 {
-	long	n;
-	int		sign;
+	long	res;
 	char 	*ptr;
 
-	n = 0;
-	sign = 1;
-	ptr = (char)nptr;
-	if (*ptr == '-')
-		sign = -1;
-	while(*ptr)
-	return (0);
+	res = 0;
+	ptr = (char*)nptr;
+	if (*ptr == '+')
+		ptr++;
+	while(*ptr >= '0' && *ptr <= '9')
+	{
+		res *= 10 + (*ptr - '0');
+		ptr++;
+	}
+	return (res);
 }

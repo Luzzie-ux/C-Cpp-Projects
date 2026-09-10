@@ -1,15 +1,19 @@
 #include "incs/codexion.h"
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {
-	char **args;
-	if (argc != 8)
+	t_table	table;
+	if (argc != 9)
 	{
-		fprintf(stderr, "Usage: %s <args>", argv[0]);
-		return (-1);
+		fprintf(stderr, "Usage: %s <nbr_of_coders> <time_burnout>", argv[0]);
+		fprintf(stderr, " <time_compile> <time_debug> <time_refactor>");
+		fprintf(stderr, " <nbr_of_compiles_required> <dongle_cooldown>");
+		fprintf(stderr, " <scheduler>\n");
+		return (1);
 	}
-	args = parser(argc, argv);
+	if (parser(&table, argv))
+		return(1);
+	printf("Everything Working :D !\n");
 	return (0);
 }
 

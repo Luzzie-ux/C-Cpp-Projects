@@ -3,13 +3,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 INCS = incs/codexion.h 
-SRCS = srcs/codexion.c, srcs/memory.c, srcs/parser.c, srcs/strings.c \
+SRCS = srcs/codexion.c srcs/memory.c srcs/parser.c srcs/strings.c \
 		main.c
 
-OBJS = $(SRCS:.c=.o) $(MAIN: .c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME) clean
-	./$(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
