@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:32 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 23:09:25 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/14 19:02:30 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,21 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	if (i == n)
 		return (0);
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	long	res;
+	char	*ptr;
+
+	res = 0;
+	ptr = (char *)nptr;
+	while (*ptr >= '0' && *ptr <= '9')
+	{
+		res *= 10 + (*ptr - '0');
+		ptr++;
+	}
+	return (res);
 }
 
 long	ft_atol(const char *nptr)
