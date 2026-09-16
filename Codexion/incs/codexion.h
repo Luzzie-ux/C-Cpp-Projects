@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 23:48:07 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/16 19:59:03 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 typedef enum e_action
 {
+	NONE,
 	COMPILE,
 	DEBUG,
 	REFACTOR,
@@ -33,14 +34,12 @@ typedef enum e_schedule
 	EDF,
 }	t_schedule;
 
-typedef unsigned int	t_bool;
-
 typedef struct s_dongle
 {
-	size_t		id;
-	t_bool		is_taken;
-	size_t		cooldown;
-}				t_dongle;
+	size_t			id;
+	unsigned char	is_taken;
+	size_t			cooldown;
+}					t_dongle;
 
 typedef struct s_coder
 {
@@ -49,9 +48,7 @@ typedef struct s_coder
 	t_action	action;
 	t_dongle	*left;
 	t_dongle	*right;
-	time_t		deadline;
-	time_t		last_compile;
-	time_t		internal_clock;
+	int			compiles;
 }				t_coder;
 
 typedef struct s_table
@@ -85,7 +82,11 @@ long	ft_atol(const char *nptr);
 void	*ft_memset(void *s, int c, size_t n);
 
 	//		Coder Methods		//
+void	*coder(t_table *table);
+
 	//		Dongle Methods		//
+void	*dongle(t_table *table);
+
 	//		Table Methods		//
 	//		Time Methods		//
 
