@@ -1,8 +1,8 @@
 NAME = codexion
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -pthread
 
-INCS = incs
+INCS = -Iincs
 
 MAIN = codexion.c
 CODERS = srcs/coders/coders.c
@@ -12,41 +12,42 @@ UTILS = srcs/utils/errors.c srcs/utils/memory.c srcs/utils/parser.c srcs/utils/s
 
 SRCS = $(UTILS) $(CODERS) $(SCHEDULER) $(RUNTIME) $(MAIN)
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:%.c=%.o)
 BUILD_DIR = build
 COMPDB = $(BUILD_DIR)/compile_commands.json
 
 all: $(NAME) compdb
 
 $(NAME): $(OBJS)
+	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	mv $(OBJS) $(BUILD_DIR)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCS)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
 compdb:
-	@mkdir -p $(BUILD_DIR)
 	@echo '[' > $(COMPDB)
 	@first=1; \
 	for src in $(SRCS); do \
-			obj=$${src%.c}.o; \
+			base=$$(basename $$src .c); \
+			obj="$(BUILD_DIR)/$$base.o"; \
 			if [ $$first -eq 0 ]; then echo ',' >> $(COMPDB); fi; \
 			first=0; \
 			printf '  {\n' >> $(COMPDB); \
 			printf '    "directory": "%s",\n' "$(CURDIR)" >> $(COMPDB); \
-			printf '    "command": "$(CC) $(CFLAGS) -I$(INCS) -c %s -o %s",\n' "$$src" "$$obj" >> $(COMPDB); \
+			printf '    "command": "$(CC) $(CFLAGS) $(INCS) -c %s -o %s",\n' "$$src" "$$obj" >> $(COMPDB); \
 			printf '    "file": "%s/%s"\n' "$(CURDIR)" "$$src" >> $(COMPDB); \
-			printf '  },' >> $(COMPDB); \
-	done; \
-	echo '' >> $(COMPDB); \
-	echo ']' >> $(COMPDB)
+			printf '  }' >> $(COMPDB); \
+	done
+	@echo '' >> $(COMPDB)
+	@echo ']' >> $(COMPDB)
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(BUILD_DIR)
 
 re: fclean all
 
