@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:23:13 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/17 16:13:48 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 19:33:17 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*dongle(t_table *table)
 		table->dongles[i].cooldown = table->dongle_cooldown;
 		i++;
 	}
-	return (NULL);
+	return (table);
 }
 
 void	*coder(t_table *table)
@@ -47,5 +47,5 @@ void	*coder(t_table *table)
 		table->coders[i].right = &table->dongles[(i + 1) % 10];
 		i++;
 	}
-	return (NULL);
+	return (table);
 }

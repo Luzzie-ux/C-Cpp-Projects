@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/16 19:59:03 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 19:44:08 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	*coder(t_table *table);
 void	*dongle(t_table *table);
 
 	//		Table Methods		//
+void	kill_table(t_table *table);
 	//		Time Methods		//
 
 /*

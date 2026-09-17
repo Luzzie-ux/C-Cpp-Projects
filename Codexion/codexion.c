@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:03 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/17 16:09:56 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 19:44:42 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	main(int argc, char **argv)
 		return (fprintf(stderr, "Usage: %s", argv[0]), usage());
 	if (parser(&table, argv))
 		return (1);
+	else if (!dongle(&table))
+		return (1);
+	else if (!coder(&table))
+		return (free(table.dongles), 1);
 	printf("Everything Working :D !\n");
-	return (0);
+	return (kill_table(&table), 0);
 }
