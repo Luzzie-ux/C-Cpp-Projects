@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:23:08 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 21:42:59 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 16:01:58 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/codexion.h"
+#include "codexion.h"
 
 int	error(int status)
 {

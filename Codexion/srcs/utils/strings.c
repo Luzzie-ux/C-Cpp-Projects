@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:32 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/14 19:02:30 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 16:13:31 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/codexion.h"
+#include "codexion.h"
 
 size_t	ft_strlen(const char *s)
 {

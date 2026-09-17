@@ -6,11 +6,11 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:49 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/10 23:37:15 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/17 16:13:23 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/codexion.h"
+#include "codexion.h"
 
 static int	characters(char *arg)
 {
