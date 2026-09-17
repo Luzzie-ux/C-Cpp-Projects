@@ -2,9 +2,15 @@ NAME = codexion
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 
-INCS = incs/codexion.h 
-SRCS = srcs/codexion.c srcs/memory.c srcs/parser.c srcs/strings.c srcs/errors.c \
-		main.c
+INCS = incs/codexion.h
+
+MAIN = codexion.c \
+CODERS = srcs/coders/coders.c \
+RUNTIME = srcs/runtime/runtime.c \
+SCHEDULER = srcs/scheduler/scheduler.c \
+UTILS = srcs/utils/errors.c srcs/utils/memory.c srcs/utils/parser.c srcs/utils/strings.c \
+
+SRCS = $(UTILS) $(CODERS) $(SCHEDULER) $(RUNTIME) $(MAIN)
 
 OBJS = $(SRCS:.c=.o)
 
