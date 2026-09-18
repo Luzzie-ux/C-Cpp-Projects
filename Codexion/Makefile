@@ -30,7 +30,7 @@ compdb:
 	@echo '[' > $(COMPDB)
 	@first=1; \
 	for src in $(SRCS); do \
-			base=$$(basename $$src .c); \
+			base=$(basename $$src .c); \
 			obj="$(BUILD_DIR)/$$base.o"; \
 			if [ $$first -eq 0 ]; then echo ',' >> $(COMPDB); fi; \
 			first=0; \
