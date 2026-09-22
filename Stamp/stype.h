@@ -1,23 +1,25 @@
+#pragma once
 #ifndef STYPE_H
 # define STYPE_H
 
-# include <stddef.h>
-# include <stdbool.h>
+#include <stdlib.h>
 
-typedef struct {
-	char *data;
-	size_t length;
-	size_t size;
-	void *start;
-	void *itr;
-	void *end;
-} t_string;
+typedef struct s_string string;
+typedef struct s_vstr vstr;
+typedef void * iter;
 
-typedef struct {
-	void(*display)(const t_string *self);
-	bool(*empty)(const t_string *self);
-} t_stable;
+typedef struct s_string{
+	iter	start;
+	iter	it;
+	char	*data;
+	size_t	len;
+	size_t	size;
+	vstr	*v;
+	iter	end;
+}			string;
 
-extern t_stable svt;
+typedef struct s_vstr{
+	/*...*/
+}			vstr;
 
-#endif /* STYPE_H */
+#endif

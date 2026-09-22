@@ -1,26 +1,18 @@
-#include "stype.h"
-#include <stdio.h>
+# include <string.h>
+# include <stype.h>
 
-t_stable svt;
-
-void display(const t_string *self);
-bool empty(const t_string *self);
-
-void display(const t_string *self)
+void	string$(string *self, const char *format)
 {
-	printf("%s", self->data);
+	self.data = ft_strdup(format);
 }
 
-bool empty(const t_string *self)
+string	*new$(const char *format)
 {
-	if (!self->data)
-		return (true);
-	return (false);
+	string *obj = malloc(sizeof(string));
+	return obj;
 }
 
-t_stable *init_string_vtable(void)
+void	del$(string **self)
 {
-	svt.display = &display;
-	svt.empty = &empty;
-	return (&svt);
+	free(*self);
 }
