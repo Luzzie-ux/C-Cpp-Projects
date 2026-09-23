@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/17 19:44:08 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 12:09:59 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <pthread.h>
+# include <stdbool.h>
 # include <sys/time.h>
 
 typedef enum e_action
@@ -36,10 +37,10 @@ typedef enum e_schedule
 
 typedef struct s_dongle
 {
-	size_t			id;
-	unsigned char	is_taken;
-	size_t			cooldown;
-}					t_dongle;
+	size_t		id;
+	_Bool		is_taken;
+	size_t		cooldown;
+}				t_dongle;
 
 typedef struct s_coder
 {
@@ -88,7 +89,8 @@ void	*coder(t_table *table);
 void	*dongle(t_table *table);
 
 	//		Table Methods		//
-void	kill_table(t_table *table);
+void	kill(t_table *table);
+int		table(t_table *table, char **argv);
 	//		Time Methods		//
 
 /*
