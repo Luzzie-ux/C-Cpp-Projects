@@ -44,7 +44,7 @@ compdb:
 	@echo ']' >> $(COMPDB)
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -f $(addprefix $(BUILD_DIR)/,$(notdir $(OBJS)))
 
 fclean: clean
 	rm -rf $(NAME)
