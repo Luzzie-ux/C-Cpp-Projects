@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 18:32:30 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/23 19:07:43 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:41:59 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	*compile(void *coder)
 
 	cd = (t_coder *)coder;
 	printf("%ld is compiling\n", cd->id);
+	debug(coder);
 	return (NULL);
 }
 
@@ -27,6 +28,7 @@ void	*debug(void *coder)
 
 	cd = (t_coder *)coder;
 	printf("%ld is debugging\n", cd->id);
+	refactor(coder);
 	return (NULL);
 }
 

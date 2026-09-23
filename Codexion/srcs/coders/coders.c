@@ -6,11 +6,18 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:23:13 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/23 18:17:59 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:48:29 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codexion.h"
+
+_Bool	get_dongle(t_coder *self)
+{
+	printf("Coder %ld has taken a dongle\n", self->id);
+	printf("Coder %ld has taken a dongle\n", self->id);
+	return (false);
+}
 
 _Bool	dongle(t_table *table)
 {
@@ -46,6 +53,7 @@ _Bool	coder(t_table *table)
 		table->coders[i].left = &table->dongles[i];
 		table->coders[i].right = &table->dongles[(i + 1) % 10];
 		table->coders[i].burnout = table->burnout;
+		table->coders[i].get_dongle = &get_dongle;
 		i++;
 	}
 	return (false);

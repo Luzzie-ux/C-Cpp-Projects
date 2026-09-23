@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/23 19:15:33 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 20:47:26 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_coder
 	t_dongle	*right;
 	int			compiles;
 	time_t		burnout;
+	_Bool		(*get_dongle)(struct s_coder *self);
 }				t_coder;
 
 typedef struct s_table
@@ -85,6 +86,7 @@ void	*ft_memset(void *s, int c, size_t n);
 
 	//		Coder Methods		//
 _Bool	coder(t_table *table);
+_Bool	get_dongle(t_coder *self);
 
 	//		Dongle Methods		//
 _Bool	dongle(t_table *table);
