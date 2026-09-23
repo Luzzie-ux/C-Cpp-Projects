@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   codexion.c                                         :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/10 21:22:03 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/23 18:36:55 by rodrpere         ###   ########.fr       */
+/*   Created: 2026/09/23 18:32:30 by rodrpere          #+#    #+#             */
+/*   Updated: 2026/09/23 19:07:43 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codexion.h"
 
-int	main(int argc, char **argv)
+void	*compile(void *coder)
 {
-	t_table	env;
+	t_coder *cd;
 
-	if (argc != 9)
-		return (fprintf(stderr, "Usage: %s", argv[0]), usage());
-	else if (table(&env, argv))
-		return (1);
-	else if (init(&env))
-		return (1);
-	printf("Everything Working :D !\n");
-	return (kill(&env), 0);
+	cd = (t_coder *)coder;
+	printf("%ld is compiling\n", cd->id);
+	return (NULL);
 }
+
+void	*debug(void *coder)
+{
+	t_coder *cd;
+
+	cd = (t_coder *)coder;
+	printf("%ld is debugging\n", cd->id);
+	return (NULL);
+}
+
+void	*refactor(void *coder)
+{
+	t_coder *cd;
+
+	cd = (t_coder *)coder;
+	printf("%ld is refactoring\n", cd->id);
+	return (NULL);
+}
+

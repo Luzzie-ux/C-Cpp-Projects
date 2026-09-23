@@ -1,12 +1,12 @@
 NAME = codexion
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread
+CFLAGS = -Wall -Wextra -Werror -g -pthread
 
 INCS = -Iincs
 
 MAIN = codexion.c
 CODERS = srcs/coders/coders.c
-RUNTIME = srcs/runtime/runtime.c
+RUNTIME = srcs/runtime/runtime.c srcs/runtime/routine.c
 SCHEDULER = srcs/scheduler/scheduler.c
 UTILS = srcs/utils/errors.c srcs/utils/memory.c srcs/utils/parser.c srcs/utils/strings.c
 

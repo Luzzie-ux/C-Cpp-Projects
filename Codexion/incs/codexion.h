@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 23:38:37 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/23 12:09:59 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 19:15:33 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_coder
 	t_dongle	*left;
 	t_dongle	*right;
 	int			compiles;
+	time_t		burnout;
 }				t_coder;
 
 typedef struct s_table
@@ -83,15 +84,24 @@ long	ft_atol(const char *nptr);
 void	*ft_memset(void *s, int c, size_t n);
 
 	//		Coder Methods		//
-void	*coder(t_table *table);
+_Bool	coder(t_table *table);
 
 	//		Dongle Methods		//
-void	*dongle(t_table *table);
+_Bool	dongle(t_table *table);
 
 	//		Table Methods		//
 void	kill(t_table *table);
-int		table(t_table *table, char **argv);
+_Bool	table(t_table *table, char **argv);
+
 	//		Time Methods		//
+
+	//		Runtime Methods		//
+_Bool	tcreate(t_coder *coder);
+_Bool	tclose(t_coder *coder);
+void	*compile(void *coder);
+void	*debug(void *coder);
+void	*refactor(void *coder);
+_Bool	init(t_table *table);
 
 /*
 ◦ timestamp_in_ms X has taken a dongle

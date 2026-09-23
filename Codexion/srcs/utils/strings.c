@@ -6,7 +6,7 @@
 /*   By: rodrpere <rodrpere@42.student.porto.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 21:22:32 by rodrpere          #+#    #+#             */
-/*   Updated: 2026/09/17 16:13:31 by rodrpere         ###   ########.fr       */
+/*   Updated: 2026/09/23 18:45:46 by rodrpere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_atoi(const char *nptr)
 	ptr = (char *)nptr;
 	while (*ptr >= '0' && *ptr <= '9')
 	{
-		res *= 10 + (*ptr - '0');
+		res = (res * 10) + (*ptr - '0');
 		ptr++;
 	}
 	return (res);
@@ -69,15 +69,28 @@ int	ft_atoi(const char *nptr)
 
 long	ft_atol(const char *nptr)
 {
-	long	res;
-	char	*ptr;
+	long		num;
+	long		sign;
+	char		*ptr;
 
-	res = 0;
+	num = 0;
+	sign = 1;
 	ptr = (char *)nptr;
-	while (*ptr >= '0' && *ptr <= '9')
+	while (ptr && (*ptr == ' ' || *ptr == '\t'
+			|| *ptr == '\n' || *ptr == '\r'
+			|| *ptr == '\v' || *ptr == '\f'))
+		ptr++;
+	if (*ptr == '+')
+		ptr++;
+	else if (*ptr == '-')
 	{
-		res *= 10 + (*ptr - '0');
+		sign *= -1;
 		ptr++;
 	}
-	return (res);
+	while (*ptr >= '0' && *ptr <= '9')
+	{
+		num = (num * 10) + (*ptr - '0');
+		ptr++;
+	}
+	return (num * sign);
 }
